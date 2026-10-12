@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARL Group — Event-агентство полного цикла</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f8f9fb;
+    --bg2: #eff2f6;
+    --card: #ffffff;
+    --line: #e3e7ee;
+    --line2: #d6dce6;
+    --ink: #131722;
+    --dim: #5c6679;
+    --dim2: #8b95a5;
+    --gold: #b1831e;
+    --gold2: #d9a73e;
+    --gold-soft: rgba(177, 131, 30, 0.08);
+    --gold-border: rgba(177, 131, 30, 0.22);
+    --shadow-sm: 0 2px 8px rgba(18, 24, 38, 0.04);
+    --shadow-md: 0 12px 30px rgba(18, 24, 38, 0.06);
+    --shadow-lg: 0 24px 60px rgba(18, 24, 38, 0.09);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    line-height: 1.55;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1220px; margin: 0 auto; padding: 0 28px; }
+  a { color: inherit; text-decoration: none; }
+  
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(248, 249, 251, 0.90);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-bar {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 76px;
+  }
+  .brand-logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand-logo {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    margin-left: auto;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--dim);
+  }
+  .nav-links a {
+    transition: color 0.18s ease;
+  }
+  .nav-links a:hover {
+    color: var(--ink);
+  }
+  .nav-contact-quick {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    font-size: 0.84rem;
+    line-height: 1.25;
+    margin-left: 6px;
+  }
+  .nav-contact-quick strong {
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .nav-contact-quick span {
+    font-size: 0.75rem;
+    color: var(--dim2);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 26px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(177, 131, 30, 0.22);
+  }
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(177, 131, 30, 0.32);
+  }
+  .btn-outline {
+    background: #ffffff;
+    border-color: var(--line2);
+    color: var(--ink);
+  }
+  .btn-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-2px);
+  }
+  .nav-bar .btn {
+    padding: 10px 22px;
+    font-size: 0.88rem;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    padding: 110px 0 96px;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(900px 520px at 78% 0%, rgba(217, 167, 62, 0.18), transparent 65%),
+      radial-gradient(760px 520px at 4% 95%, rgba(60, 110, 240, 0.05), transparent 60%);
+    pointer-events: none;
+  }
+  .hero-wrap {
+    position: relative;
+    z-index: 2;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: #ffffff;
+    border: 1px solid var(--line2);
+    padding: 8px 18px;
+    border-radius: 999px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow-sm);
+  }
+  .eyebrow .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 10px rgba(177, 131, 30, 0.6);
+  }
+  h1 {
+    font-family: "Plus Jakarta Sans", "Inter", sans-serif;
+    font-size: clamp(2.7rem, 5.8vw, 4.8rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 24px;
+    max-width: 17ch;
+  }
+  h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lead {
+    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+    color: var(--dim);
+    max-width: 62ch;
+    margin-bottom: 38px;
+    line-height: 1.6;
+  }
+  .cta-group {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 80px;
+    padding-top: 48px;
+    border-top: 1px solid var(--line);
+  }
+  .stat-card {
+    display: flex;
+    flex-direction: column;
+  }
+  .stat-card .num {
+    font-family: "Plus Jakarta Sans", "Inter", sans-serif;
+    font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .stat-card .label {
+    font-size: 0.9rem;
+    color: var(--dim);
+    margin-top: 8px;
+    font-weight: 500;
+  }
+
+  /* SECTION COMMONS */
+  section {
+    padding: 100px 0;
+  }
+  .shead {
+    max-width: 680px;
+    margin-bottom: 56px;
+  }
+  .kick {
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  h2 {
+    font-family: "Plus Jakarta Sans", "Inter", sans-serif;
+    font-size: clamp(2rem, 3.4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    color: var(--ink);
+  }
+  .shead p {
+    color: var(--dim);
+    margin-top: 16px;
+    font-size: 1.08rem;
+    line-height: 1.6;
+  }
+
+  /* ABOUT SECTION */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .about-content p {
+    color: var(--dim);
+    margin-bottom: 18px;
+    font-size: 1.04rem;
+    line-height: 1.65;
+  }
+  .about-panel {
+    background: linear-gradient(160deg, #ffffff 0%, #f4f6fa 100%);
+    border: 1px solid var(--line2);
+    border-radius: 24px;
+    padding: 38px 34px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+  .about-panel::after {
+    content: "";
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(217, 167, 62, 0.22), transparent 70%);
+    pointer-events: none;
+  }
+  .plist {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    position: relative;
+    z-index: 2;
+  }
+  .pitem {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .pico {
+    flex: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: var(--gold-soft);
+    border: 1px solid var(--gold-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: var(--gold);
+  }
+  .pitem b {
+    display: block;
+    font-size: 1.02rem;
+    font-weight: 700;
+    margin-bottom: 3px;
+    color: var(--ink);
+  }
+  .pitem span {
+    color: var(--dim);
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  /* SERVICES */
+  .services-bg {
+    background: #ffffff;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .svc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .svc-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 34px;
+    transition: all 0.24s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+  }
+  .svc-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, var(--gold), var(--gold2));
+    transition: width 0.3s ease;
+  }
+  .svc-card:hover {
+    transform: translateY(-6px);
+    border-color: #e5d3aa;
+    box-shadow: var(--shadow-lg);
+  }
+  .svc-card:hover::before {
+    width: 100%;
+  }
+  .svc-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: var(--gold-soft);
+    border: 1px solid var(--gold-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.55rem;
+    margin-bottom: 22px;
+  }
+  .svc-card h3 {
+    font-size: 1.28rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .svc-card p {
+    color: var(--dim);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    flex-grow: 1;
+  }
+  .svc-card .more {
+    margin-top: 20px;
+    font-size: 0.88rem;
+    color: var(--gold);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.85;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .svc-card:hover .more {
+    opacity: 1;
+    transform: translateX(3px);
+  }
+
+  /* WHY US */
+  .why-section {
+    background: var(--bg2);
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 40px;
+  }
+  .why-card {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .why-num {
+    flex: none;
+    font-family: "Plus Jakarta Sans", "Inter", sans-serif;
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: var(--gold);
+    width: 48px;
+    line-height: 1.1;
+  }
+  .why-card b {
+    display: block;
+    font-size: 1.12rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  .why-card span {
+    color: var(--dim);
+    font-size: 0.94rem;
+    line-height: 1.5;
+  }
+
+  /* PORTFOLIO */
+  .portfolio-section {
+    background: #ffffff;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .pf-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 190px;
+    gap: 20px;
+  }
+  .pf-item {
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: flex-end;
+    padding: 22px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.26s ease, box-shadow 0.26s ease;
+  }
+  .pf-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  .pf-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(14, 19, 30, 0.75) 0%, rgba(14, 19, 30, 0.2) 60%, transparent 100%);
+    transition: opacity 0.2s;
+  }
+  .pf-item:hover::after {
+    opacity: 0.9;
+  }
+  .pf-item.big {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  .pf-content {
+    position: relative;
+    z-index: 2;
+  }
+  .pf-tag {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--gold2);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 4px;
+  }
+  .pf-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+  }
+  .pf-item.big .pf-title {
+    font-size: 1.35rem;
+  }
+  /* Gradients mimicking project moods */
+  .pf-1 { background: linear-gradient(135deg, #4d3a6d, #29203e); }
+  .pf-2 { background: linear-gradient(135deg, #7c5a3d, #3c2a1c); }
+  .pf-3 { background: linear-gradient(135deg, #376a61, #1d3c36); }
+  .pf-4 { background: linear-gradient(135deg, #3f557c, #1f2d45); }
+  .pf-5 { background: linear-gradient(135deg, #7c3f56, #411f2c); }
+  .pf-6 { background: linear-gradient(135deg, #5e6b3f, #333a1e); }
+
+  /* CONTACT / CALCULATOR */
+  .contact-section {
+    background: var(--bg);
+  }
+  .cbox {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid var(--line2);
+    border-radius: 28px;
+    padding: 56px;
+    box-shadow: var(--shadow-lg);
+  }
+  .cbox h2 {
+    margin-bottom: 14px;
+  }
+  .cbox .dim-lead {
+    color: var(--dim);
+    margin-bottom: 32px;
+    font-size: 1.02rem;
+  }
+  .cinfo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 16px;
+  }
+  .crow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .crow .ic-circle {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    background: var(--gold-soft);
+    border: 1px solid var(--gold-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: var(--gold);
+    flex: none;
+  }
+  .crow b {
+    display: block;
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .crow span {
+    color: var(--dim);
+    font-size: 0.9rem;
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    background: #f8fafc;
+    border: 1px solid var(--line2);
+    border-radius: 14px;
+    padding: 15px 18px;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+  }
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(177, 131, 30, 0.12);
+  }
+  .contact-form .btn-submit {
+    justify-content: center;
+    margin-top: 6px;
+    padding: 16px 28px;
+    font-size: 1rem;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 50px 0 40px;
+    background: #ffffff;
+  }
+  .foot-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .foot-links {
+    display: flex;
+    gap: 26px;
+    color: var(--dim);
+    font-size: 0.92rem;
+    font-weight: 500;
+  }
+  .foot-links a:hover {
+    color: var(--gold);
+  }
+  .foot-soc {
+    display: flex;
+    gap: 12px;
+  }
+  .soc-link {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--line2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    color: var(--dim);
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+  .soc-link:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-2px);
+  }
+  .foot-bottom {
+    color: var(--dim2);
+    font-size: 0.85rem;
+    margin-top: 32px;
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  @media(max-width: 980px) {
+    .nav-links, .nav-contact-quick { display: none; }
+    .about-grid, .cbox { grid-template-columns: 1fr; gap: 36px; }
+    .svc-grid, .why-grid { grid-template-columns: 1fr 1fr; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .pf-grid { grid-template-columns: 1fr 1fr; }
+    .pf-item.big { grid-column: span 2; }
+  }
+  @media(max-width: 600px) {
+    .svc-grid, .why-grid, .stats-row, .pf-grid { grid-template-columns: 1fr; }
+    .pf-item.big { grid-column: span 1; }
+    .cbox { padding: 30px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="wrap nav-bar">
+    <a href="#" class="brand-logo-wrap" title="ARL Group">
+      <img src="https://lh3.googleusercontent.com/aida/AEtjO1UZy4gdzLu45nZWhubzA_dmX_kxw258V3SC6emo6BbcwCw3Z57j5s3t17BqxsynCgwBE3pvfcRLsg88OhsEBJKxc4uP3UZKzEdPkcMpVFghmJRCDoNXNCS1YAQ_cOPaYfD2WcgPcLKxeMUPD5EUfHi-2tpVr_htDsTfyizpRDZwEWv9cZ2PqRogKCWKY9bVdVhMRBoKRaTnfVD4unwe0aGCrmE86zC_kx4zLCofJfFzGEgKu5c1itM9rYFa" alt="ARL Group" class="brand-logo">
+    </a>
+    <div class="nav-links">
+      <a href="#about">О нас</a>
+      <a href="#services">Услуги</a>
+      <a href="#why">Почему мы</a>
+      <a href="#portfolio">Портфолио</a>
+      <a href="#contact">Контакты</a>
+    </div>
+    <div class="nav-contact-quick">
+      <strong>+7 (495) 989-12-34</strong>
+      <span>Москва · с 1994 года</span>
+    </div>
+    <a href="#contact" class="btn btn-gold">Обсудить проект</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-wrap">
+    <div class="eyebrow"><span class="dot"></span>Event-агентство полного цикла · Москва</div>
+    <h1>Создаём события, которые <em>запоминают</em></h1>
+    <p class="lead">Концепция, режиссура, продакшн, свет и звук, декор и кейтеринг — всё под ключ. 30 лет превращаем идеи в масштабные мероприятия, о которых говорят.</p>
+    <div class="cta-group">
+      <a href="#contact" class="btn btn-gold">Рассчитать мероприятие →</a>
+      <a href="#portfolio" class="btn btn-outline">Смотреть портфолио</a>
+    </div>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="num">30 лет</div>
+        <div class="label">в индустрии с 1994 года</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">5 000+</div>
+        <div class="label">успешных мероприятий</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">100%</div>
+        <div class="label">своё оборудование</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">TOP</div>
+        <div class="label">награды режиссёров</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-content">
+      <div class="kick">О компании</div>
+      <h2>Полный цикл — от идеи до финальных титров</h2>
+      <p style="margin-top: 18px">ARL Group — агентство полного цикла. Мы берём на себя всё: от разработки концепции и сценария до света, звука, декора и кейтеринга. Вам не нужно координировать десять подрядчиков — всё в одной слаженной команде.</p>
+      <p>Собственный парк техники от ведущих мировых производителей, штатные режиссёры, сценаристы и технические специалисты с международными наградами. Это бескомпромиссный контроль качества на каждом этапе и дедлайны, которым можно доверять.</p>
+      <a href="#services" class="btn btn-outline" style="margin-top: 12px">Наши услуги →</a>
+    </div>
+    <div class="about-panel">
+      <div class="plist">
+        <div class="pitem">
+          <div class="pico">🎬</div>
+          <div>
+            <b>Единая команда</b>
+            <span>Режиссура, продакшн и техника — без разрозненных подрядчиков</span>
+          </div>
+        </div>
+        <div class="pitem">
+          <div class="pico">🏆</div>
+          <div>
+            <b>Награждённые специалисты</b>
+            <span>Международный опыт, авторская режиссура и признание в индустрии</span>
+          </div>
+        </div>
+        <div class="pitem">
+          <div class="pico">⚙️</div>
+          <div>
+            <b>Собственное оборудование</b>
+            <span>Свет, звук, сцена, фермы и подвес без переплат за субаренду</span>
+          </div>
+        </div>
+        <div class="pitem">
+          <div class="pico">📅</div>
+          <div>
+            <b>30 лет практики</b>
+            <span>Более 5 000 реализованных проектов любого масштаба с 1994 года</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services-bg">
+  <div class="wrap">
+    <div class="shead">
+      <div class="kick">Услуги</div>
+      <h2>Шесть направлений — один надежный подрядчик</h2>
+      <p>Берём проект целиком под ключ или профессионально усиливаем ваше событие на отдельном ключевом этапе.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">✨</div>
+        <h3>Мероприятие под ключ</h3>
+        <p>Разработка концепции, режиссура, технический продакшн и безупречное проведение от первой встречи до демонтажа.</p>
+        <a href="#contact" class="more">Заказать расчет →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔊</div>
+        <h3>Аренда оборудования</h3>
+        <p>Свет, звук, подвес, сценические комплексы и металлические конструкции из собственного парка техники.</p>
+        <a href="#contact" class="more">Посмотреть райдер →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🎥</div>
+        <h3>Видео продакшн</h3>
+        <p>Ролики на открытие, озвучка, саунд-дизайн, 3D-графика и многокамерная съемка трансляций.</p>
+        <a href="#contact" class="more">Шоурилы продакшна →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🎭</div>
+        <h3>Режиссура</h3>
+        <p>Разработка авторского сценария, подбор площадки, артистов, кастинг, сценография и поминутный тайминг.</p>
+        <a href="#contact" class="more">Узнать подробнее →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🌿</div>
+        <h3>Декор и оформление</h3>
+        <p>Создание эскизов, 3D-визуализация, подбор премиальных материалов и элементов декора под общую тему.</p>
+        <a href="#contact" class="more">Галерея концепций →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🍽️</div>
+        <h3>Кейтеринг</h3>
+        <p>Индивидуальная адаптация меню под концепцию мероприятия, обученный персонал и высокая гастрономия.</p>
+        <a href="#contact" class="more">Меню и форматы →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why" class="why-section">
+  <div class="wrap">
+    <div class="shead">
+      <div class="kick">Почему мы</div>
+      <h2>Причины доверить мероприятие ARL Group</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <div>
+          <b>Полный цикл 360°</b>
+          <span>Одна персональная ответственность за весь проект вместо десятка несогласованных подрядчиков.</span>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <div>
+          <b>30 лет на рынке</b>
+          <span>Работаем с 1994 года. Более 5 000 реализованных масштабных событий в России и за рубежом.</span>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <div>
+          <b>Свой парк техники</b>
+          <span>Топовые бренды оборудования на собственном складе в Москве — никаких наценок за субаренду.</span>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">04</div>
+        <div>
+          <b>Награждённая команда</b>
+          <span>Штатные режиссёры, светохудожники и инженеры с признанными международными наградами.</span>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">05</div>
+        <div>
+          <b>Сквозной контроль качества</b>
+          <span>Каждый этап контролируется внутри: от сценария и 3D-моделей до технического прогона и безопасности.</span>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">06</div>
+        <div>
+          <b>Сроки и прозрачность</b>
+          <span>Детализированная смета, открытый договор и строгое соблюдение всех дедлайнов.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="portfolio-section">
+  <div class="wrap">
+    <div class="shead">
+      <div class="kick">Портфолио</div>
+      <h2>Избранные проекты</h2>
+      <p>Фрагменты из нашего архива 5 000+ успешно реализованных масштабных событий.</p>
+    </div>
+    <div class="pf-grid">
+      <div class="pf-item big pf-1">
+        <div class="pf-content">
+          <div class="pf-tag">Корпоратив под ключ</div>
+          <div class="pf-title">Юбилей крупного холдинга · 2 000 гостей</div>
+        </div>
+      </div>
+      <div class="pf-item pf-2">
+        <div class="pf-content">
+          <div class="pf-tag">Фестиваль</div>
+          <div class="pf-title">Open-air концертное шоу</div>
+        </div>
+      </div>
+      <div class="pf-item pf-3">
+        <div class="pf-content">
+          <div class="pf-tag">Конференция</div>
+          <div class="pf-title">Деловой международный форум</div>
+        </div>
+      </div>
+      <div class="pf-item pf-4">
+        <div class="pf-content">
+          <div class="pf-tag">Презентация</div>
+          <div class="pf-title">Премьера нового продукта</div>
+        </div>
+      </div>
+      <div class="pf-item pf-5">
+        <div class="pf-content">
+          <div class="pf-tag">Церемония</div>
+          <div class="pf-title">Премия лидеров индустрии</div>
+        </div>
+      </div>
+      <div class="pf-item pf-6">
+        <div class="pf-content">
+          <div class="pf-tag">Частное событие</div>
+          <div class="pf-title">Камерное торжество в усадьбе</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="wrap">
+    <div class="cbox">
+      <div>
+        <div class="kick">Контакты и расчет</div>
+        <h2>Расскажите о вашем событии</h2>
+        <p class="dim-lead">Оставьте заявку — подготовим предварительную смету и режиссерскую концепцию в течение одного рабочего дня.</p>
+        <div class="cinfo-list">
+          <div class="crow">
+            <div class="ic-circle">📞</div>
+            <div>
+              <b>+7 (495) 989-12-34</b>
+              <span>Ежедневно 10:00–20:00 · Дежурная смена 24/7</span>
+            </div>
+          </div>
+          <div class="crow">
+            <div class="ic-circle">✉️</div>
+            <div>
+              <b>info@arl-group.ru</b>
+              <span>Для технических райдеров и запросов КП</span>
+            </div>
+          </div>
+          <div class="crow">
+            <div class="ic-circle">📍</div>
+            <div>
+              <b>Москва, Бережковская набережная</b>
+              <span>Офис и складской комплекс оборудования</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Заявка успешно отправлена ✓'; this.querySelector('button').style.background='#28a745';">
+        <input type="text" placeholder="Ваше имя или компания" required>
+        <input type="tel" placeholder="Телефон для связи (+7 ...)" required>
+        <select>
+          <option value="" disabled selected>Формат мероприятия</option>
+          <option value="corporate">Корпоративное мероприятие</option>
+          <option value="concert">Концерт / Open-air</option>
+          <option value="forum">Конференция или форум</option>
+          <option value="equipment">Аренда звука, света и сцены</option>
+          <option value="other">Другой формат под ключ</option>
+        </select>
+        <textarea rows="3" placeholder="Дата, планируемое число гостей и пожелания"></textarea>
+        <button type="submit" class="btn btn-gold btn-submit">Получить расчет проекта →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <div class="brand-logo-wrap">
+        <img src="https://lh3.googleusercontent.com/aida/AEtjO1UZy4gdzLu45nZWhubzA_dmX_kxw258V3SC6emo6BbcwCw3Z57j5s3t17BqxsynCgwBE3pvfcRLsg88OhsEBJKxc4uP3UZKzEdPkcMpVFghmJRCDoNXNCS1YAQ_cOPaYfD2WcgPcLKxeMUPD5EUfHi-2tpVr_htDsTfyizpRDZwEWv9cZ2PqRogKCWKY9bVdVhMRBoKRaTnfVD4unwe0aGCrmE86zC_kx4zLCofJfFzGEgKu5c1itM9rYFa" alt="ARL Group" class="brand-logo">
+      </div>
+      <div class="foot-links">
+        <a href="#about">О нас</a>
+        <a href="#services">Услуги</a>
+        <a href="#why">Почему мы</a>
+        <a href="#portfolio">Портфолио</a>
+        <a href="#contact">Контакты</a>
+      </div>
+      <div class="foot-soc">
+        <a href="https://youtube.com/@arbeiten24" target="_blank" class="soc-link" title="YouTube">▶</a>
+        <a href="#" class="soc-link" title="Telegram">tg</a>
+        <a href="#" class="soc-link" title="VK">vk</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 1994–2026 ARL Group — Организация мероприятий и технический продакшн под ключ.</div>
+      <div>Все права защищены. Москва.</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
